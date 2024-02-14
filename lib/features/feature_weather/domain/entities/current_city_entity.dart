@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:weather_app/features/feature_bookmark/data/models/current_city_model.dart';
+import 'package:weather_app/features/feature_weather/data/models/current_city_model.dart';
 
 class CurrentCityEntity extends Equatable{
   final Coord? coord;

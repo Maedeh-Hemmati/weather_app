@@ -1,4 +1,4 @@
-import 'package:weather_app/features/feature_bookmark/domain/entities/current_city_entity.dart';
+import 'package:weather_app/features/feature_weather/domain/entities/current_city_entity.dart';
 
 /// coord : {"lon":10.99,"lat":44.34}
 /// weather : [{"id":501,"main":"Rain","description":"moderate rain","icon":"10d"}]
@@ -15,8 +15,8 @@ import 'package:weather_app/features/feature_bookmark/domain/entities/current_ci
 /// name : "Zocca"
 /// cod : 200
 
-class CurrentCityModel extends CurrentCityEntity{
-  CurrentCityModel({
+class CurrentCityModel extends CurrentCityEntity {
+  const CurrentCityModel({
     Coord? coord,
     List<Weather>? weather,
     String? base,
@@ -31,45 +31,47 @@ class CurrentCityModel extends CurrentCityEntity{
     int? id,
     String? name,
     int? cod,
-  }):super(
-    coord:coord,
-    weather: weather,
-    base: base,
-    main: main,
-    visibility: visibility,
-    wind: wind,
-    rain: rain,
-    clouds: clouds,
-    dt: dt,
-    sys: sys,
-    timezone: timezone,
-    id: id,
-    name:name,
-    cod: cod,
-  );
+  }) : super(
+          coord: coord,
+          weather: weather,
+          base: base,
+          main: main,
+          visibility: visibility,
+          wind: wind,
+          rain: rain,
+          clouds: clouds,
+          dt: dt,
+          sys: sys,
+          timezone: timezone,
+          id: id,
+          name: name,
+          cod: cod,
+        );
 
-  CurrentCityModel.fromJson(dynamic json) {
-    coord = json['coord'] != null ? Coord.fromJson(json['coord']) : null;
+  factory CurrentCityModel.fromJson(dynamic json) {
+    List<Weather> weather = [];
     if (json['weather'] != null) {
-      weather = [];
       json['weather'].forEach((v) {
-        weather?.add(Weather.fromJson(v));
+        weather.add(Weather.fromJson(v));
       });
     }
-    base = json['base'];
-    main = json['main'] != null ? Main.fromJson(json['main']) : null;
-    visibility = json['visibility'];
-    wind = json['wind'] != null ? Wind.fromJson(json['wind']) : null;
-    rain = json['rain'] != null ? Rain.fromJson(json['rain']) : null;
-    clouds = json['clouds'] != null ? Clouds.fromJson(json['clouds']) : null;
-    dt = json['dt'];
-    sys = json['sys'] != null ? Sys.fromJson(json['sys']) : null;
-    timezone = json['timezone'];
-    id = json['id'];
-    name = json['name'];
-    cod = json['cod'];
+    return CurrentCityModel(
+      coord: json['coord'] != null ? Coord.fromJson(json['coord']) : null,
+      weather: weather,
+      base: json['base'],
+      main: json['main'] != null ? Main.fromJson(json['main']) : null,
+      visibility: json['visibility'],
+      wind: json['wind'] != null ? Wind.fromJson(json['wind']) : null,
+      rain: json['rain'] != null ? Rain.fromJson(json['rain']) : null,
+      clouds: json['clouds'] != null ? Clouds.fromJson(json['clouds']) : null,
+      dt: json['dt'],
+      sys: json['sys'] != null ? Sys.fromJson(json['sys']) : null,
+      timezone: json['timezone'],
+      id: json['id'],
+      name: json['name'],
+      cod: json['cod'],
+    );
   }
-
 }
 
 /// type : 2
