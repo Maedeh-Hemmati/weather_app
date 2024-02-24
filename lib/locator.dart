@@ -1,5 +1,4 @@
-import 'dart:js_interop';
-
+import 'package:get_it/get_it.dart';
 import 'package:weather_app/features/feature_weather/data/data_source/remote/api_provider.dart';
 import 'package:weather_app/features/feature_weather/data/repository/weather_repository.dart';
 import 'package:weather_app/features/feature_weather/domain/repository/weather_repository.dart';
@@ -19,5 +18,4 @@ setup() {
 
   ///bloc
   locator.registerSingleton<HomeBloc>(HomeBloc(locator()));
-
 }
