@@ -4,7 +4,10 @@ import 'package:weather_app/features/feature_weather/data/data_source/remote/api
 import 'package:weather_app/features/feature_weather/data/repository/weather_repository.dart';
 import 'package:weather_app/features/feature_weather/domain/use_cases/get_current_weather_usecase.dart';
 
-void main() {
+import 'locator.dart';
+
+void main() async {
+  await setup();
   runApp(const MyApp());
 }
 
